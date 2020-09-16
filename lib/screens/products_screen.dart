@@ -21,8 +21,11 @@ class ProductsScreen extends StatelessWidget {
   }
 
   Widget _buildContent(BuildContext context) {
+
+    // Dependiendo del ESTADO de la clase de ProductsChangeNotifier cambiamos el UI
     return Consumer<ProductsChangeNotifier>(
         builder: (context, productsChangeNotifier, _) {
+          
       switch (productsChangeNotifier.state) {
         case ProductState.INITIAL:
           return Expanded(child: Center(child: CircularProgressIndicator()));
@@ -33,7 +36,6 @@ class ProductsScreen extends StatelessWidget {
         case ProductState.EMPTY:
           return Center(child: Text('EMPTY'));
         case ProductState.ERROR:
-        print('ERROR ${productsChangeNotifier.failure.code}');
           String image = 'assets/img/illustration_wrong.png';
           switch (productsChangeNotifier.failure.code) {
             case 401:

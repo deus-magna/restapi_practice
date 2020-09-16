@@ -32,6 +32,7 @@ class ProductsChangeNotifier with ChangeNotifier {
     }
   }
 
+  // GET de los productos
   List<Product> get products => _products;
 
   // GET & SET del estado 
